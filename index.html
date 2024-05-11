@@ -10,6 +10,32 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const birthdayCard = document.querySelector(".birthdayCard");
+        let isTouchDevice = false;
+      
+        // Check if the device is a touch device
+        if ('ontouchstart' in window || navigator.maxTouchPoints) {
+          isTouchDevice = true;
+        }
+      
+        // Define the event type based on the device
+        const eventType = isTouchDevice ? 'touchstart' : 'click';
+      
+        // Add event listener for the defined event type
+        birthdayCard.addEventListener(eventType, function (event) {
+          // Prevent default behavior for touch events
+          if (isTouchDevice) {
+            event.preventDefault();
+          }
+          
+          // Toggle the 'clicked' class
+          this.classList.toggle("clicked");
+        });
+      });
+    </script>
+    
     <div class="birthdayCard">
       <div class="cardFront">
         <h3 class="happy">HAPPY BIRTHDAY</h3>
